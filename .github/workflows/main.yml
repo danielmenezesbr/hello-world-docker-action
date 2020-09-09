@@ -36,4 +36,5 @@ jobs:
       - name: Use oxr463/setup-vagrant
         run: |
             VBoxManage --version && \
+            vagrant plugin install vagrant-vbguest && \
             vagrant up dc
