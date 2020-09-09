@@ -23,22 +23,20 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a set of commands using the runners shell
-      - name: Versions
-        run: |
-          VBoxManage --version && \
+      - name: Show packages version
+        run: &packagesVersion | 
+          VBoxManage --version
           vagrant up --version
          
       - name: Update packages
         run: |
-          brew cask uninstall https://raw.githubusercontent.com/Homebrew/homebrew-cask/7f340b97d60907da225e9f5c10e81f9285ef2edb/Casks/vagrant.rb
+          brew cask uninstall vagrant
           brew cask install https://raw.githubusercontent.com/Homebrew/homebrew-cask/7f340b97d60907da225e9f5c10e81f9285ef2edb/Casks/vagrant.rb
-          brew cask uninstall https://raw.githubusercontent.com/danielmenezesbr/homebrew-cask/virtualbox-6024/Casks/virtualbox.rb
+          brew cask uninstall virtualbox
           brew cask install https://raw.githubusercontent.com/danielmenezesbr/homebrew-cask/virtualbox-6024/Casks/virtualbox.rb
           
-      - name: Versions
-        run: |
-          VBoxManage --version && \
-          vagrant up --version
+      - name: Show packages version
+        run: *packagesVersion
               
       - name: Cache multiple paths
         uses: actions/cache@v2
@@ -50,5 +48,5 @@ jobs:
           
       - name: vagrant
         run: |
-            vagrant plugin install vagrant-vbguest && \
+            vagrant plugin install vagrant-vbguest
             vagrant up dc
