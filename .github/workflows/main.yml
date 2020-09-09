@@ -24,7 +24,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Show packages version
-        run: &packagesVersion | 
+        run: | 
           VBoxManage --version
           vagrant up --version
          
@@ -36,7 +36,9 @@ jobs:
           brew cask install https://raw.githubusercontent.com/danielmenezesbr/homebrew-cask/virtualbox-6024/Casks/virtualbox.rb
           
       - name: Show packages version
-        run: *packagesVersion
+        run: | 
+          VBoxManage --version
+          vagrant up --version
               
       - name: Cache multiple paths
         uses: actions/cache@v2
