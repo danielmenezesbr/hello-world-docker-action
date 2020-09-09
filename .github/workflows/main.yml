@@ -48,8 +48,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
           
           
-      - name: Use oxr463/setup-vagrant
+      - name: vagrant
         run: |
-            
             vagrant plugin install vagrant-vbguest && \
             vagrant up dc
