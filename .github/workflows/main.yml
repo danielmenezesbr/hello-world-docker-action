@@ -36,5 +36,4 @@ jobs:
       - name: Use oxr463/setup-vagrant
         run: |
             VBoxManage --version && \
-            vagrant init -m hashicorp/bionic64 && \
-            vagrant up
+            vagrant up dc
