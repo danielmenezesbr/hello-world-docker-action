@@ -31,3 +31,11 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          
+      - name: Use oxr463/setup-vagrant
+        uses: ./
+        with:
+          exec: |
+            VBoxManage --version && \
+            vagrant init -m hashicorp/bionic64 && \
+            vagrant up
