@@ -37,4 +37,4 @@ jobs:
         run: |
             vagrant plugin install vagrant-vbguest
             vagrant up dc
-            vagrant powershell -c 'systeminfo'
+            vagrant powershell dc -c 'systeminfo'
