@@ -11,6 +11,14 @@ jobs:
     runs-on: macos-10.15
 
     steps:
+      - name: test_python
+        env:
+          ORACLE_SSO_PASSWORD: ${{ secrets.ORACLE_SSO_PASSWORD}}
+          ORACLE_SSO_USERNAME: ${{ secrets.ORACLE_SSO_USERNAME}}
+        run: |
+          pip install selenium
+          python download.py
+          
       - name: Update packages
         run: |
           brew cask uninstall vagrant
