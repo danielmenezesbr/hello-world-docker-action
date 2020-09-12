@@ -5,6 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import os
 
+print("Download Oracle")
+
 def download_progress(driver):
     print(str(driver.execute_script('''return document.querySelector("downloads-manager").shadowRoot.querySelectorAll("downloads-item")[0].shadowRoot.querySelector("#description").textContent''')).strip())
     return driver.execute_script(
@@ -30,6 +32,7 @@ options.add_experimental_option(
 )
 
 def download(url, css_link):
+    print("Start download process...")
     driver = webdriver.Chrome(options=options)
     driver.get(url)
     print(driver.title)
